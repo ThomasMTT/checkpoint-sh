@@ -1,7 +1,7 @@
 #!/bin/bash                                    
 
 # Define the list of checkpoints
-declare -a CHECKPOINTS=("checkpoint1" "checkpoint2" "checkpoint3")
+declare -a CHECKPOINTS=("checkpoint1" "checkpoint2" "checkpoint3" "cleanup")
 
 # Define the checkpoint file
 CHECKPOINT_FILE="/tmp/CHECKPOINT"
@@ -66,7 +66,8 @@ main() {
         case $Checkpoint in
             "checkpoint1") $Checkpoint ;;
             "checkpoint2") $Checkpoint ;;
-            "checkpoint3") $Checkpoint && cleanup ;;
+            "checkpoint3") $Checkpoint  ;;
+            "cleanup")     $Checkpoint ;;
             *) echo "Checkpoint $Checkpoint doesnt have any linked function... skipping to ${CHECKPOINTS[$(( i + 1))]}"
         esac
     done
