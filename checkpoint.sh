@@ -50,17 +50,15 @@ main() {
     last_checkpoint=$(get_last_checkpoint)
 
     # Determine the index of the last completed Checkpoint
-    last_checkpoint_index=-1
     for i in "${!CHECKPOINTS[@]}"; do
         if [ "${CHECKPOINTS[$i]}" == "$last_checkpoint" ]; then
-            last_checkpoint_index=$((i - 1))
             break
         fi
     done
 
     # Run the last checkpoint to the end
-    for (( i = last_checkpoint_index + 1; i < ${#CHECKPOINTS[@]}; i++ )); do
-        Checkpoint=${CHECKPOINTS[$i]}
+    for (( j = i + 1; j < ${#CHECKPOINTS[@]}; j++ )); do
+        Checkpoint=${CHECKPOINTS[$j]}
         
         # Define checkpoints order
         case $Checkpoint in
