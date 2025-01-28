@@ -64,9 +64,9 @@ main() {
         
         # Define checkpoints order
         case $Checkpoint in
-            "checkpoint1") checkpoint1 ;;
-            "checkpoint2") checkpoint2 ;;
-            "checkpoint3") checkpoint3 && cleanup ;;
+            "checkpoint1") $Checkpoint ;;
+            "checkpoint2") $Checkpoint ;;
+            "checkpoint3") $Checkpoint && cleanup ;;
             *) echo "Checkpoint $Checkpoint doesnt have any linked function... skipping to ${CHECKPOINTS[$(( i + 1))]}"
         esac
     done
